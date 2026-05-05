@@ -1,0 +1,476 @@
+/* ═════════════════════════════════════════════════════════════════════
+   Dolphin · globals.css
+   Tokens lifted verbatim from dolphin_prototype_v3.html (the canonical
+   visual reference). Do not drift — any change here must also land in
+   the prototype, or be agreed with the team first.
+   ═════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ─────────────────────────────────────────────────── */
+:root {
+  /* Pillars — prototype's terse names (source of truth) */
+  --bc: #2B7DD4;  --bc2: #E8F2FD;  --bc3: #C2DCF7;  /* Body */
+  --mc: #6B63CC;  --mc2: #EEEDFB;  --mc3: #C5C1F0;  /* Mind */
+  --lc: #18916A;  --lc2: #E3F5EE;  --lc3: #A8DECE;  /* Lifestyle */
+  --pc: #B8780A;  --pc2: #FDF0DA;  --pc3: #F0CA7A;  /* Purpose */
+
+  /* Semantic aliases — use these in TSX for readability */
+  --body: var(--bc);           --body-light: var(--bc2);      --body-border: var(--bc3);
+  --mind: var(--mc);           --mind-light: var(--mc2);      --mind-border: var(--mc3);
+  --lifestyle: var(--lc);      --lifestyle-light: var(--lc2); --lifestyle-border: var(--lc3);
+  --purpose: var(--pc);        --purpose-light: var(--pc2);   --purpose-border: var(--pc3);
+
+  /* Surfaces + text */
+  --bg: #F4F6FA;
+  --surf: #FFFFFF;
+  --text: #0D1420;
+  --muted: #5A6478;
+  --faint: #9AA3B2;
+  --bdr: #E4E8F0;
+  --bdr2: #CBD2DF;
+
+  /* Shape */
+  --r: 10px;
+  --rlg: 16px;
+  --rxl: 22px;
+
+  /* Typography */
+  --ff: 'DM Sans', system-ui, sans-serif;
+  --fd: 'Instrument Serif', Georgia, serif;
+
+  /* Shadow */
+  --sh:  0 1px 3px rgba(13,20,32,.05), 0 4px 16px rgba(13,20,32,.07);
+  --sh2: 0 8px 32px rgba(13,20,32,.12);
+
+  /* Dark sections — Flow hero, Score reveal, Courses header */
+  --hero-dark: linear-gradient(135deg, #0D1420 0%, #162038 60%, #1A1836 100%);
+  --hero-dark-text: #CBD5E1;
+  --hero-dark-muted: #94A3B8;
+  --hero-dark-faint: #4A6080;
+
+  /* Light hero image — Home and Assessment welcome */
+  --hero-light:
+    linear-gradient(135deg, rgba(235,243,253,0.65), rgba(244,246,250,0.65), rgba(238,237,251,0.65)),
+    url('https://imaginewithrashid.com/wp-content/uploads/2026/02/Gemini_Generated_Image_96ajtm96ajtm96aj.webp');
+}
+
+/* ── Base reset / element defaults ─────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  font-family: var(--ff);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Prototype utility classes (kept verbatim to simplify porting) ── */
+@layer components {
+  /* Typography helpers */
+  .ey {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .serif { font-family: var(--fd); }
+
+  /* Cards */
+  .card {
+    background: var(--surf);
+    border: 1px solid var(--bdr);
+    border-radius: var(--rlg);
+    padding: 22px;
+    box-shadow: var(--sh);
+  }
+  .card-sm {
+    background: var(--surf);
+    border: 1px solid var(--bdr);
+    border-radius: var(--r);
+    padding: 16px;
+  }
+
+  /* Badges + chips */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .chip {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 7px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* Progress bar */
+  .bar-track {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--bdr);
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 10px 22px;
+    border-radius: var(--r);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--ff);
+    border: none;
+    transition: all .15s;
+  }
+  .btn-p { background: var(--bc); color: #fff; }
+  .btn-p:hover { background: #2270BC; }
+  .btn-o {
+    background: transparent;
+    border: 1.5px solid var(--bdr2);
+    color: var(--text);
+  }
+  .btn-o:hover { background: var(--bg); }
+  .btn-sm {
+    padding: 7px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--ff);
+    border: none;
+  }
+
+  /* Section container */
+  .sec {
+    padding: 40px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  /* Grids — prototype terse aliases. */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+
+  /* ── HOME HERO ── */
+  .hero-wrap {
+    background: var(--hero-light);
+    background-size: cover;
+    background-position: center;
+    padding: 80px 40px;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  .hero-left {
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+  h1.hero {
+    font-family: var(--fd);
+    font-size: 56px;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  h1.hero em { font-style: italic; color: var(--bc); }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.72;
+    max-width: 440px;
+    margin-bottom: 32px;
+  }
+
+  /* ── FLOW SHOWCASE (Home) ── */
+  .flow-showcase { flex: 0 0 auto; position: relative; }
+  .fsc-card {
+    background: var(--surf);
+    border-radius: var(--rxl);
+    box-shadow: var(--sh2);
+    padding: 28px;
+    min-width: 340px;
+    border: 1px solid var(--bdr);
+  }
+
+  /* Habit row + checkbox tick */
+  .habit-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--bdr);
+    font-size: 13px;
+  }
+  .habit-row:last-child { border-bottom: none; }
+  .tick {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1.5px solid var(--bdr2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all .2s;
+  }
+  .tick.done { background: var(--lc); border-color: var(--lc); }
+
+  /* Integration badge dot (used standalone in prototype) */
+  .int-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* Hover lift for the Home four-pillars teaser cards. */
+  .pillar-teaser { display: block; }
+  .pillar-teaser:hover { transform: translateY(-4px); box-shadow: var(--sh2); }
+
+  /* Nav — kept in CSS so TopNav can stay styled via classes. */
+  .nav {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    height: 60px;
+    background: var(--surf);
+    border-bottom: 1px solid var(--bdr);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nl {
+    font-size: 13.5px;
+    color: var(--muted);
+    padding: 0 13px;
+    cursor: pointer;
+    transition: color .12s;
+    white-space: nowrap;
+  }
+  .nl:hover, .nl.on { color: var(--text); }
+  .nl.on { font-weight: 500; }
+
+  /* ── FRAMEWORK (S1) ── */
+  .pcard { border-radius: var(--rlg); padding: 28px; border: 1px solid; }
+
+  /* ── FLOW DASHBOARD (S2) ── */
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .sidebar { display: flex; flex-direction: column; gap: 14px; }
+  .score-hero {
+    background: linear-gradient(135deg, #0D1420, #162035);
+    border-radius: var(--rxl);
+    padding: 32px;
+    color: #fff;
+  }
+  .mini-score-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+  }
+  .mini-score-row:last-child { border-bottom: none; }
+  .int-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    border-radius: var(--r);
+    border: 1px solid var(--bdr);
+    background: var(--surf);
+    transition: border-color .15s;
+    cursor: pointer;
+  }
+  .int-card:hover { border-color: var(--bdr2); }
+  .int-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .int-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .status-connected { background: #18916A; }
+  .status-soon      { background: #CBD2DF; }
+  .stat-box { background: var(--bg); border-radius: var(--r); padding: 14px 16px; }
+  .cal-day {
+    height: 28px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  /* ── COURSES (S4) ── */
+  .journey-header {
+    background: linear-gradient(135deg, #0D1420 0%, #1a2540 100%);
+    color: #fff;
+    padding: 52px 40px 0;
+  }
+  .journey-header h2 {
+    font-family: var(--fd);
+    font-size: 38px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .journey-header p {
+    font-size: 14px;
+    color: #94A3B8;
+    line-height: 1.65;
+    max-width: 480px;
+  }
+  .phase-path {
+    display: flex;
+    align-items: center;
+    margin-top: 36px;
+    overflow-x: auto;
+    padding-bottom: 28px;
+    gap: 0;
+  }
+  .phase-node { flex-shrink: 0; width: 110px; text-align: center; position: relative; }
+  .phase-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    border: 2px solid;
+  }
+  .phase-line {
+    flex: 1;
+    height: 2px;
+    background: #ffffff18;
+    min-width: 24px;
+    margin-top: -32px;
+    flex-shrink: 0;
+  }
+  .phase-node p { font-size: 11px; color: #94A3B8; line-height: 1.4; }
+  .phase-node.done   .phase-circle { background: var(--lc); border-color: var(--lc); color: #fff; }
+  .phase-node.active .phase-circle {
+    background: var(--bc);
+    border-color: var(--bc);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(43, 125, 212, .25);
+  }
+  .phase-node.locked .phase-circle { background: #1E2B3D; border-color: #2A3850; color: #4A5568; }
+
+  .pil-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 20px 40px 0;
+    background: var(--surf);
+    border-bottom: 1px solid var(--bdr);
+    overflow-x: auto;
+  }
+  .pil-tab {
+    padding: 11px 18px;
+    border-radius: var(--r) var(--r) 0 0;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: all .15s;
+    background: transparent;
+    font-family: var(--ff);
+  }
+  .pil-tab.on { color: var(--text); background: var(--bg); border-color: var(--bdr); }
+
+  .lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: var(--r);
+    border: 1px solid var(--bdr);
+    background: var(--surf);
+    cursor: pointer;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .lesson-card:hover { border-color: var(--bdr2); box-shadow: var(--sh); }
+  .lesson-card.active-lesson { border-color: var(--bc); border-left-width: 3px; }
+  .lesson-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .lesson-done   .lesson-num { background: var(--lc);  border-color: var(--lc); color: #fff; }
+  .lesson-active .lesson-num { background: var(--bc);  border-color: var(--bc); color: #fff; }
+  .lesson-locked .lesson-num { background: var(--bg);  border-color: var(--bdr); color: var(--faint); }
+}
+
+/* ── Responsive (kept outside layer so overrides apply cleanly) ── */
+@media (max-width: 900px) {
+  .g4 { grid-template-columns: 1fr 1fr; }
+  .hero-wrap { padding: 52px 28px; }
+  h1.hero { font-size: 40px; }
+  .nav { padding: 0 20px; }
+  .sec { padding: 28px 20px; }
+}
+@media (max-width: 560px) {
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+}
+
+/* ── Animations lifted from prototype ──────────────────────────────── */
+@keyframes fi {
+  from { opacity: .3; transform: translateY(4px); }
+  to   { opacity: 1;  transform: none; }
+}
+@keyframes spin-in {
+  from { stroke-dashoffset: 320; }
+  to   { stroke-dashoffset: var(--target-offset); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: .5;  transform: scale(.85); }
+}
+.pulse { animation: pulse 2s ease-in-out infinite; }
+.ring-animated { animation: spin-in 1.4s cubic-bezier(.4,0,.2,1) forwards; }
