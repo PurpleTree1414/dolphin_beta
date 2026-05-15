@@ -10,7 +10,7 @@
  * undefined, all writes silently no-op.
  */
 
-import type { AssessmentState } from '@/types';
+import type { AssessmentAnswers, AssessmentState, PillarWeights } from '@/types';
 
 const KEYS = {
   ONBOARDED: 'dolphin.onboarded',
@@ -66,6 +66,30 @@ export const getAssessmentState = (): AssessmentState | null =>
 export const setAssessmentState = (state: AssessmentState): void =>
   safeSet(KEYS.ASSESSMENT, state);
 export const clearAssessmentState = (): void => safeRemove(KEYS.ASSESSMENT);
+
+/**
+ * Convenience wrapper called by the assessment flow on completion.
+ * Builds the full `AssessmentState` record from raw answers + derived
+ * + adjusted weights and persists it. Also flips the onboarded flag.
+ *
+ * TODO: replace with API call — POST /assessments.
+ */
+export const saveAssessmentResult = (input: {
+  answers: Partial<AssessmentAnswers>;
+  derivedWeights: PillarWeights;
+  adjustedWeights: PillarWeights;
+}): AssessmentState => {
+  const state: AssessmentState = {
+    answers: input.answers,
+    derivedWeights: input.derivedWeights,
+    adjustedWeights: input.adjustedWeights,
+    completed: true,
+    completedAt: new Date().toISOString(),
+  };
+  setAssessmentState(state);
+  markOnboarded();
+  return state;
+};
 
 // ── Saved articles (Research) ───────────────────────────────────────
 // TODO: replace with API call — POST /articles/:id/save, DELETE same.
