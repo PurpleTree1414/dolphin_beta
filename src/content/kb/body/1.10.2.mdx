@@ -1,0 +1,158 @@
+---
+title: "Key Health Markers: HRV, RHR, Blood Pressure, and Composition"
+id: "1.10.2"
+pillar: body
+section: "1.10"
+slug: "key-health-markers-hrv-rhr-blood-pressure-and-composition"
+knowledgeLens: foundation
+depth: introductory
+contentType: conceptual
+hasReferences: true
+---
+
+This is, in some ways, the central article of the entire Body pillar — the one that tells you what your Dolphin data actually means and how to read it. The previous article argued for moving beyond single-number measures of health. This article gets specific. It walks through the six metrics that make up the Body score, explains what each one is actually measuring, what healthy patterns look like, and how to think about your own readings.
+
+It also covers a small set of clinical health markers — blood pressure, basic blood work — that wearables cannot measure but that round out the picture. For users who pursue good Flow Scores over months, occasional clinical confirmation that the underlying biology is responding is worth doing. The wearable data and the clinical data are complementary, not substitutes for each other.
+
+## The six Body metrics, revisited
+
+Dolphin's Body score is calculated from six metrics, with the following weights:
+
+- **Heart rate variability (HRV)** — 0.25
+- **Sleep quality** — 0.25
+- **Exercise frequency** — 0.20
+- **Resting heart rate (RHR)** — 0.15
+- **Active calories** — 0.10
+- **Steps** — 0.05
+
+We have touched on each of these throughout the library. Here we consolidate what they mean and how to read them.
+
+## Heart rate variability (0.25)
+
+**What it is.** HRV is the measure of variation in time between heartbeats. A healthy heart does not beat at a perfectly steady rhythm — the interval between beats varies subtly from one to the next, modulated by the **autonomic nervous system** (the part of the nervous system that controls automatic functions). Higher variation generally reflects better autonomic balance, particularly stronger **parasympathetic nervous system** activity (the recovery, "rest and digest" branch). Lower variation generally reflects sympathetic dominance, fatigue, illness, stress, or undertraining.
+
+**The full physiology was covered in 1.4.1.** The summary version: HRV is a window into how flexibly your nervous system shifts between activation and recovery. The flexibility itself is the marker of health, not any specific number.
+
+**What good patterns look like.** Stable or gradually rising HRV over weeks and months. The 7-day rolling average matters more than any single day's reading. Day-to-day variation is normal and should not be over-interpreted.
+
+**What concerning patterns look like.** Sustained declines in the 7-day rolling average — typically more than 10-15% below your established baseline, persisting for over a week. This is the autonomic signature of accumulated stress, whether from training, life demands, illness, or some combination.
+
+**Important context.** Absolute HRV values vary enormously between people based on age, sex, fitness, genetics, and which device measures them. A 25-year-old endurance athlete might routinely show 80-120 ms; a healthy 50-year-old might show 30-50 ms. Comparing your number to anyone else's is not meaningful. What is meaningful is how your number changes relative to your own baseline.
+
+**How quickly it responds.** HRV is one of the more responsive metrics in the Body score. Acute interventions (slow breathing, cold exposure) can produce measurable changes within minutes. Lifestyle interventions (better sleep, reduced training stress) typically show up in baseline within 1-2 weeks of consistent practice.
+
+## Sleep quality (0.25)
+
+**What it is.** A composite score derived from total sleep duration, sleep efficiency (the proportion of time in bed actually spent asleep), distribution across sleep stages, and overnight heart rate and HRV patterns. Different wearable devices weight these inputs slightly differently, but the general picture is consistent: more sleep, more efficiently used, with reasonable architecture, scores better.
+
+**The full physiology was covered in Section 1.7.** Sleep quality depends on sleep duration, sleep timing consistency, and the conditions that support sleep architecture (room temperature, light exposure, caffeine and alcohol timing, stress management).
+
+**What good patterns look like.** Consistent total sleep around the user's adequate range (typically 7-9 hours for adults). Sleep efficiency above 85%. Stable timing across most days. Gradually improving or stable scores over months as sleep practice consolidates.
+
+**What concerning patterns look like.** Persistent declines in sleep efficiency or total sleep, particularly when accompanied by HRV declines and RHR rises. Highly variable sleep timing across the week (the "social jet lag" pattern covered in 1.7.2). Sustained reductions in time spent in deep sleep, which can accompany chronic stress, illness, or aging effects worth attending to.
+
+**Important context.** Wearable sleep tracking is more accurate than it was a few years ago but still imperfect. Total sleep duration is generally tracked reliably. Stage tracking (light vs deep vs REM) is less reliable on most consumer devices and should be interpreted as approximate. The trends matter more than the precise values.
+
+## Exercise frequency (0.20)
+
+**What it is.** The number and quality of training sessions performed during the week, captured through wearable data and integrations.
+
+**The framework was covered throughout Sections 1.4 and 1.5.** Three to five sessions per week is the productive range for most users; beyond this, returns diminish and recovery becomes the limit.
+
+**What good patterns look like.** Consistent training frequency over weeks and months. Modest variation around the mean (some weeks slightly more, some slightly less) without dramatic swings.
+
+**What concerning patterns look like.** Sustained declines, particularly when accompanied by HRV declines or sleep quality declines. This is often the autonomic signature of overreaching forcing reduced training. Alternatively, the pattern can reflect life disruptions, motivation issues, or simply changes in circumstances — context matters for interpretation.
+
+**Important context.** What "counts" as exercise varies by integration. Most wearables register sessions of 15+ minutes at elevated heart rate. Brief but vigorous activity (movement snacks, covered in 1.3.3) may not register, despite producing real adaptations. Users tracking exercise frequency should know how their device counts, and supplement with manual tracking if needed.
+
+## Resting heart rate (0.15)
+
+**What it is.** Heart rate at rest — typically measured during sleep or upon waking, before any activity or stimulants. The number reflects how efficiently the cardiovascular system functions: lower resting heart rates generally indicate stronger heart function and better autonomic balance.
+
+**The physiology was covered in 1.4.1.** A healthy resting heart rate for trained adults typically sits between 50 and 70 beats per minute; highly trained endurance athletes can sit in the 40s.
+
+**What good patterns look like.** Stable RHR around your established baseline, with gradual decline over months of consistent training as cardiovascular adaptations accumulate.
+
+**What concerning patterns look like.** Sustained elevations of 5-15 beats above your baseline, persisting for several days. This is often the autonomic signature of accumulated stress, illness onset, dehydration, or alcohol the night before. Single-day variations are normal noise; multi-day patterns are signal.
+
+**Important context.** RHR is one of the most reliably tracked wearable metrics. The number varies from device to device but the trends are consistent within a single device. Comparing your RHR to other people's is less meaningful than tracking your own changes.
+
+## Active calories (0.10)
+
+**What it is.** The estimated calories your body burns through movement, above your basal metabolic rate (the energy you would use just maintaining basic functions). Calculated from movement, heart rate, and personal characteristics like body size.
+
+**What good patterns look like.** Daily values that reflect a reasonably active lifestyle for the user's circumstances. The absolute number matters less than consistency: a user accumulating 300-500 active calories per day every day is generally accumulating more functional benefit than a user who hits 1000 active calories twice a week and zero on the other days.
+
+**What concerning patterns look like.** Sustained drops, often reflecting reduced exercise frequency or daily movement. Sometimes also reflects sickness, injury, or simply changes in routine.
+
+**Important context.** Active calorie estimates are noisy. Different devices produce different numbers for the same activity, and the absolute values are estimates rather than precise measurements. The direction of change matters more than the precise number on any given day.
+
+## Steps (0.05)
+
+**What it is.** Daily step count — the simplest and oldest activity metric, dating back to the 1960s pedometer studies that produced the original "10,000 steps" target.
+
+**The full picture was covered in 1.3.1.** The mortality-reduction curve flattens around 6,000-8,000 steps for older adults and 8,000-10,000 for younger adults; pushing beyond produces smaller additional gains.
+
+**What good patterns look like.** Consistent daily step counts in the active range for the user's age and circumstances. Trends that hold up across the week, including weekends.
+
+**What concerning patterns look like.** Sustained decreases, particularly during periods when life otherwise should produce normal movement. Often reflects increased sedentary work, weather, illness, or seasonal changes.
+
+**Important context.** Steps is the lowest-weighted metric in the Body score (0.05) because it captures only one dimension of activity and is partially overlapping with the other movement metrics. Hitting the step target alone, with no other activity, is much less impactful than the same activity combined with deliberate training.
+
+## Reading patterns: what the metrics mean together
+
+Individual metrics tell you something. The metrics together tell you more.
+
+**The "well-recovered" pattern.** Stable HRV at or above baseline. Stable RHR at or below baseline. Sleep quality consistent and adequate. Exercise frequency on plan. Active calories and steps reflecting normal activity. This is what consistent good practice looks like in the data — the body is handling the work, recovery is keeping up, the autonomic state is balanced.
+
+**The "accumulated stress" pattern.** Declining HRV. Rising RHR. Declining sleep quality. Exercise frequency may still be holding up (or even pushing higher) in early phases. The autonomic markers are showing what the user has not yet consciously felt. The right response is usually more recovery, not more training.
+
+**The "deconditioning" pattern.** Stable but elevated RHR. Reduced HRV. Reduced exercise frequency, active calories, and steps. This is what extended undertraining looks like — the cardiovascular system is losing the adaptations that consistent training maintains.
+
+**The "illness onset" pattern.** Sharp drop in HRV. Sharp rise in RHR. Often appearing 1-2 days before subjective illness becomes obvious. Sleep quality often drops simultaneously. The autonomic system is responding to the immune challenge before the user feels sick.
+
+**The "overreaching" pattern.** Sustained declines across HRV, RHR (rising), and sleep quality, while exercise frequency stays high. This is the signature of training stress exceeding recovery capacity, covered in detail in 1.6.3.
+
+**The "stress event" pattern.** Sharp HRV drop, sharp RHR rise, sleep quality affected, often with corresponding subjective stress. Recovers within days when the stressor passes; persists for weeks if the stressor continues.
+
+These are templates, not a complete taxonomy. The body produces other patterns, and individual variations matter. But these are the most common patterns users will encounter, and recognising them in your own data is one of the most useful skills the Flow Score can teach.
+
+## Clinical markers the wearable cannot measure
+
+Wearable data captures a meaningful slice of physiological function, but it cannot capture everything that matters. A few clinical markers, measured periodically through standard medical channels, complement the wearable data.
+
+**Blood pressure.** Resting blood pressure is one of the most reliable predictors of cardiovascular and overall mortality (Whelton et al., 2018). The standard target for adults is generally below 120/80 mmHg, with progressively higher risk above this. Blood pressure responds substantially to many of the lifestyle inputs in this library — particularly aerobic training, sodium intake, body composition, sleep quality, and stress management. Users whose Flow Scores are consistently good often see blood pressure improvements in clinical measurements.
+
+**Standard blood work.** A comprehensive metabolic panel and lipid panel, typically ordered as part of an annual physical, captures a slice of metabolic and cardiovascular health that wearables cannot see. Key markers include:
+
+- **Fasting glucose and HbA1c.** Reflecting glucose metabolism and insulin sensitivity. As covered in 1.8.2, these respond substantially to lifestyle inputs.
+- **Lipid panel.** Total cholesterol, LDL, HDL, and triglycerides. Responsive to dietary patterns, exercise, and body composition.
+- **Inflammatory markers.** Particularly C-reactive protein (CRP), a measure of systemic inflammation. Elevated values can signal chronic inflammatory states associated with cardiovascular and metabolic disease risk.
+- **Liver and kidney markers.** General markers of organ function, useful as a baseline.
+- **Vitamin D and B12.** Common deficiencies that have downstream consequences for energy, mood, and recovery.
+
+For users without specific clinical concerns, an annual blood panel is reasonable. For users with specific concerns or risk factors, more frequent assessment may be appropriate, ideally guided by a physician.
+
+**Body composition assessments.** As covered in 1.10.1, more comprehensive body composition measurement than the scale provides — DEXA, bioelectrical impedance, or careful skinfold testing — gives useful information that wearable data does not. Annual or semi-annual testing is reasonable for users who want this dimension tracked.
+
+The relationship between wearable data and clinical markers is bidirectional. Good Flow Scores typically translate to good clinical markers over months. Poor Flow Scores eventually show up in clinical measurements. And occasionally — relatively rarely — clinical markers reveal something the wearable cannot detect, such as specific nutritional deficiencies or early-stage thyroid changes. Both data streams are useful; neither is complete on its own.
+
+## How to actually use this article
+
+For users tracking their Flow Score on Dolphin, a few practical applications follow from everything above.
+
+**Trust the trends, not the daily readings.** Single days are noisy. Weekly and monthly trends are signal. The 7-day rolling averages Dolphin uses are designed for this; treating each day's score as a verdict produces more anxiety than insight.
+
+**Investigate disagreements between metrics and feeling.** If you feel great but the data is showing accumulated stress patterns, the data may be detecting something you have not yet consciously recognised. If the data looks fine but you feel wrong, your interoception (covered in 1.1.1) is detecting something the device cannot measure. Both perspectives are valuable; persistent disagreements are worth attending to.
+
+**Use the patterns to guide decisions.** When the data shows accumulated stress patterns, more training is rarely the right response. More recovery is. The metrics are giving you decision-relevant information; the most common error is ignoring it because it conflicts with the planned schedule.
+
+**Don't optimise the metric directly.** The metrics are downstream measures of physiological state. Trying to "raise HRV" through specific tactics often produces worse outcomes than supporting the underlying physiology through good sleep, training, recovery, and stress management. The Flow Score is a measurement, not an optimisation target.
+
+**Pair wearable data with clinical markers periodically.** Annual blood work and blood pressure measurement provide a longer-timescale confirmation that the lifestyle work is producing the underlying biology. They cost little time and provide substantial information.
+
+The next article, 1.10.3 Reading Your Signals, takes the framework from this article and adds the subjective dimension — how to read what your body is telling you in ways that complement and sometimes correct the wearable data.
+
+## References
+
+Whelton, P. K., Carey, R. M., Aronow, W. S., Casey, D. E., Collins, K. J., Dennison Himmelfarb, C., DePalma, S. M., Gidding, S., Jamerson, K. A., Jones, D. W., MacLaughlin, E. J., Muntner, P., Ovbiagele, B., Smith, S. C., Spencer, C. C., Stafford, R. S., Taler, S. J., Thomas, R. J., Williams, K. A., … Wright, J. T. (2018). 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the prevention, detection, evaluation, and management of high blood pressure in adults. *Hypertension*, *71*(6), e13–e115.

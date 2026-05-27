@@ -13,9 +13,12 @@
     "fresh": "npm install --no-audit --no-fund && npm run dev"
   },
   "dependencies": {
+    "gray-matter": "^4.0.3",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
@@ -26,6 +29,7 @@
     "eslint-config-next": "^15.1.6",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.22.3",
     "typescript": "^5.7.3"
   }
 }

@@ -10,7 +10,12 @@
  * undefined, all writes silently no-op.
  */
 
-import type { AssessmentAnswers, AssessmentState, PillarWeights } from '@/types';
+import type {
+  AssessmentAnswers,
+  AssessmentState,
+  KBEngagement,
+  PillarWeights,
+} from '@/types';
 
 const KEYS = {
   ONBOARDED: 'dolphin.onboarded',
@@ -20,6 +25,9 @@ const KEYS = {
   HABIT_TICKS: 'dolphin.habit_ticks',
   REFLECTIONS: 'dolphin.reflections',
   GOALS: 'dolphin.goals',
+  // Brief specifies "dolphin:kb-engagement"; we use the dot/underscore
+  // convention to stay consistent with every other key in this file.
+  KB_ENGAGEMENT: 'dolphin.kb_engagement',
 } as const;
 
 function safeGet<T>(key: string, fallback: T): T {
@@ -169,6 +177,45 @@ export const setGoalProgress = (id: string, progress: number): void => {
   const next = list.filter((g) => g.id !== id);
   next.push({ id, progress });
   safeSet(KEYS.GOALS, next);
+};
+
+// ── Knowledge Base engagement ───────────────────────────────────────
+// Tracks which KB articles the user has opened, for viewed-dots and the
+// per-section engagement donut. Read-mostly; written once per article
+// open. TODO: replace with API call — POST /kb/articles/:id/view.
+
+export const getKBEngagement = (): KBEngagement =>
+  safeGet<KBEngagement>(KEYS.KB_ENGAGEMENT, { articlesViewed: [] });
+
+/** Mark an article as viewed. Idempotent; moves the id to most-recent. */
+export const markArticleViewed = (articleId: string): KBEngagement => {
+  const current = getKBEngagement();
+  const without = current.articlesViewed.filter((id) => id !== articleId);
+  const next: KBEngagement = {
+    articlesViewed: [...without, articleId],
+    lastViewed: new Date().toISOString(),
+  };
+  safeSet(KEYS.KB_ENGAGEMENT, next);
+  return next;
+};
+
+export const isArticleViewed = (articleId: string): boolean =>
+  getKBEngagement().articlesViewed.includes(articleId);
+
+/**
+ * Engagement summary for a section: how many of its articles have been
+ * viewed. `articleIds` is the section's full article-id list so the
+ * total reflects that section's real (variable) article count.
+ */
+export const getSectionEngagement = (
+  _sectionId: string,
+  articleIds: string[],
+): { viewed: number; total: number; pct: number } => {
+  const viewedSet = new Set(getKBEngagement().articlesViewed);
+  const total = articleIds.length;
+  const viewed = articleIds.filter((id) => viewedSet.has(id)).length;
+  const pct = total === 0 ? 0 : Math.round((viewed / total) * 100);
+  return { viewed, total, pct };
 };
 
 // ── Convenience: wipe everything (used by onboarding restart in dev) ─

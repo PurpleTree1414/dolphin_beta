@@ -209,6 +209,70 @@ export type Article = {
 };
 
 // ═════════════════════════════════════════════════════════════════════
+//  Knowledge Base (Research) — Pillar → Section → Article
+// ═════════════════════════════════════════════════════════════════════
+//
+// The true KB hierarchy is exactly three levels deep. There are NO
+// "phases" or "subtopics" here — those belonged to an earlier draft.
+// Article counts per section are NOT uniform; the model must tolerate
+// variable counts (e.g. section 3.2 has 4 articles, 3.4 has 2).
+
+/** A KB pillar key is the same discriminant as the app-wide Pillar. */
+export type KBPillarKey = Pillar;
+
+/** Where an article sits on the knowledge arc. */
+export type KBKnowledgeLens = 'foundation' | 'mechanism' | 'application';
+
+/** How demanding the article is. */
+export type KBDepth = 'introductory' | 'intermediate' | 'advanced';
+
+/** The character of the content. */
+export type KBContentType = 'conceptual' | 'practical' | 'data';
+
+export type KBArticleMeta = {
+  /** Dotted identifier, e.g. "1.7.2". Also the MDX filename stem. */
+  id: string;
+  /** Display number, identical to `id` (kept distinct for clarity). */
+  number: string;
+  /** kebab-case slug derived from the title; used in the URL. */
+  slug: string;
+  title: string;
+  knowledgeLens: KBKnowledgeLens;
+  depth: KBDepth;
+  contentType: KBContentType;
+};
+
+export type KBSection = {
+  /** Dotted identifier, e.g. "1.7". */
+  id: string;
+  /** Display number, identical to `id`. */
+  number: string;
+  /** kebab-case slug derived from the section name; used in the URL. */
+  slug: string;
+  name: string;
+  articles: KBArticleMeta[];
+};
+
+export type KBPillar = {
+  key: KBPillarKey;
+  name: string;
+  description: string;
+  /** Hex colours mirrored from PILLAR_META for convenience at data sites. */
+  color: string;
+  colorLight: string;
+  colorBorder: string;
+  sections: KBSection[];
+};
+
+/** Per-user engagement, persisted via the storage seam. */
+export type KBEngagement = {
+  /** Article ids the user has opened, most-recent-last. */
+  articlesViewed: string[];
+  /** ISO timestamp of the most recent article view. */
+  lastViewed?: string;
+};
+
+// ═════════════════════════════════════════════════════════════════════
 //  Purpose — goals & reflections
 // ═════════════════════════════════════════════════════════════════════
 
